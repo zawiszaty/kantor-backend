@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+    kantor-nginx:
+        image: nginx:latest
+        container_name: kantor
+        ports:
+        - "8080:80"
+        volumes:
+            - ./:/var/www/project
+            - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+        networks:
+            - code-network
+        links:
+            - kantor-php
+    kantor-php:
+        build: ./docker/php
+        container_name: kantor-php
+        volumes:
+            - ./:/var/www/project
+        networks:
+            - code-network
+volumes:
+    persistent:
+
+networks:
+    code-network:
+        driver: bridge
