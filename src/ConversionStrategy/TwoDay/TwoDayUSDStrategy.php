@@ -6,7 +6,7 @@ namespace App\ConversionStrategy\TwoDay;
 use App\ConversionStrategy\ConversionStrategy;
 use App\Domain\ConversionAmount;
 
-class TwoDayUSDStrategy implements ConversionStrategy
+final class TwoDayUSDStrategy implements ConversionStrategy
 {
     public function conversion(float $amount): void
     {

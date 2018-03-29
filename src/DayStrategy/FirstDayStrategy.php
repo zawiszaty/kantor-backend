@@ -9,7 +9,7 @@ use App\ConversionStrategy\FirstDay\FirstDayEURStrategy;
 use App\ConversionStrategy\FirstDay\FirstDayGBPStrategy;
 use App\ConversionStrategy\FirstDay\FirstDayUSDStrategy;
 
-class FirstDayStrategy implements DayStrategy
+final class FirstDayStrategy implements DayStrategy
 {
     public function select(string $currency, float $amount): void
     {

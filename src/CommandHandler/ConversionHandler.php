@@ -7,7 +7,7 @@ use App\Command\ConversionCommand;
 use App\DayStrategy\FirstDayStrategy;
 use App\DayStrategy\TwoDayStrategy;
 
-class ConversionHandler
+final class ConversionHandler
 {
     public function handle(ConversionCommand $conversionCommand)
     {

@@ -2,7 +2,7 @@
 
 namespace App\Domain;
 
-class ConversionAmount
+final class ConversionAmount
 {
     public static $amount;
 

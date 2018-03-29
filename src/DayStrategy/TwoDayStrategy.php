@@ -7,7 +7,7 @@ use App\ConversionStrategy\TwoDay\TwoDayEURStrategy;
 use App\ConversionStrategy\TwoDay\TwoDayGBPStrategy;
 use App\ConversionStrategy\TwoDay\TwoDayUSDStrategy;
 
-class TwoDayStrategy implements DayStrategy
+final class TwoDayStrategy implements DayStrategy
 {
     public function select(string $currency, float $amount): void
     {

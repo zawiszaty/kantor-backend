@@ -3,11 +3,28 @@
 
 namespace App\Command;
 
+use Symfony\Component\Validator\Constraints as Assert;
 
-class ConversionCommand
+/**
+ * Class ConversionCommand
+ * @package App\Command
+ */
+final class ConversionCommand
 {
+    /**
+     * @var float
+     * @Assert\NotBlank()
+     */
     public $amount;
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
     public $currency;
+    /**
+     * @var int
+     * @Assert\NotBlank()
+     */
     public $date;
 
     /**
@@ -24,25 +41,25 @@ class ConversionCommand
     }
 
     /**
-     * @return mixed
+     * @return float
      */
-    public function getAmount()
+    public function getAmount(): float
     {
         return $this->amount;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getCurrency()
+    public function getCurrency(): string
     {
         return $this->currency;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getDate()
+    public function getDate(): int
     {
         return $this->date;
     }
