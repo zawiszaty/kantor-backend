@@ -15,14 +15,17 @@ final class TwoDayStrategy implements DayStrategy
             case 'EUR':
                 $strategy = new TwoDayEURStrategy();
                 $strategy->conversion($amount);
+                return;
                 break;
             case 'USD':
                 $strategy = new TwoDayUSDStrategy();
                 $strategy->conversion($amount);
+                return;
                 break;
             case 'GBP':
                 $strategy = new TwoDayGBPStrategy();
                 $strategy->conversion($amount);
+                return;
                 break;
         }
     }
