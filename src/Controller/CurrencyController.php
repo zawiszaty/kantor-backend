@@ -7,8 +7,7 @@ use App\Domain\ConversionAmount;
 use App\Form\ConversionType;
 use FOS\RestBundle\Controller\FOSRestController;
 use League\Tactician\CommandBus;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -33,7 +32,7 @@ final class CurrencyController extends FOSRestController
     }
 
     /**
-     * @Route("/api/conversion", name="conversionAction", methods={"POST"})
+     * @Rest\Post("/api/conversion")
      *
      * @param Request $request
      * @return Response
@@ -58,10 +57,12 @@ final class CurrencyController extends FOSRestController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->commandBus->handle($conversionCommand);
 
-            return new JsonResponse(ConversionAmount::getAmount(), 200);
+            $view = $this->view(ConversionAmount::getAmount(), 200);
+            return $this->handleView($view);
         }
 
-        return new JsonResponse($form->getErrors(), 500);
+        $view = $this->view($form->getErrors(), 500);
+        return $this->handleView($view);
 
     }
 }
